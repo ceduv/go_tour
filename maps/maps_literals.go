@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+type Vertex struct {
+	Lat, Long float64
+}
+
+var m = map[string]Vertex{
+	"Bell Labs": {
+		40.68433, -74.39967,
+	},
+	"Google": {
+		37.42202, -122.08408,
+	},
+}
+
+func main() {
+	fmt.Println(m)
+}
+
+// map[bell labs :{40.68433 -74.39967} google:{37.42202 -122.08408}]
+
+// Map literals are like struct literals, but the keys are required.

@@ -21,7 +21,7 @@ func main() {
 }
 
 // [john paul george ringo]
-// [john paul] [george ringo]
+// [john paul] [paul george]
 // [john XXX] [XXX george]
 // [john XXX george ringo]
 
