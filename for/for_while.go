@@ -9,3 +9,7 @@ func main() {
 	}
 	fmt.Println(sum)
 }
+
+// 1024
+
+// The init and post statements are optional.
