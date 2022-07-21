@@ -1,0 +1,75 @@
+linters-settings:
+  lll:
+    line-length: 140
+linters:
+  disable-all: true
+  enable:
+    # Enabled By Default Linters
+      - govet
+      - errcheck
+      # - staticcheck  # @info: disabled because of go1.18
+      # - unused # @info: disabled because of go1.18
+      # - gosimple # @info: disabled because of go1.18
+      # - structcheck # @info: disabled because of go1.18
+      - varcheck
+      - ineffassign
+      - deadcode
+      - typecheck
+    # Disabled By Default Linters (-E/--enable)
+      # - golint
+      # - stylecheck # @info: disabled because of go1.18
+      - gosec
+      - unconvert
+      # - dupl # @info: osef
+      # - goconst # @info: osef
+      - gocyclo
+      - gofmt
+      - goimports
+      - depguard
+      - misspell
+      - lll
+      # - unparam # @info: disabled because of go1.18
+      - nakedret
+      - prealloc
+      - gocritic
+      - gochecknoinits
+  # enable-all: true
+  # disable:
+      - asciicheck
+      # - bodyclose # @info: disabled because of go1.18
+      - dogsled
+      - errorlint
+      - exhaustive
+      - exportloopref
+      - funlen
+      - gocognit
+      - godot
+      - godox
+      - goerr113
+      - gofumpt
+      - goheader
+      # - gomnd # @info: comment because codium does't see exclude rules
+      - gomodguard
+      - goprintffuncname
+      - nestif
+      - nlreturn
+      # - noctx # @info: disabled because of go1.18
+      - nolintlint
+      # - rowserrcheck # @info: disabled because of go1.18
+      # - sqlclosecheck  # @info: disabled because of go1.18
+      # - testpackage # @info: don't use because we include test in package themself
+      # - tparallel # @info: disabled because of go1.18
+      - whitespace
+      # - wrapcheck # @info: don't use because we allow external package errors
+      - wsl
+issues:
+  exclude-rules:
+    - path: libs/db/sql/migrate/dataset
+      linters:
+        - gomnd
+    - path: _test\.go
+      linters:
+        - dupl
+        - lll
+        - gocognit
+        - funlen

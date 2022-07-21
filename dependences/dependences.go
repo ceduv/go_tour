@@ -12,7 +12,8 @@ package main
 
 func main()
 
-// go get dl dependences
+// ! go get dl dependences
 
 // lors d une maj de dependences, les faires part petit block
 // 2/3 pour isoler les pb
+// * file go.mod

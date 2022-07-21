@@ -6,10 +6,13 @@ import (
 )
 
 type User struct {
-	Name  string `json:"name"` // `json:"key"`
-	Age   int    `json:"age"`
-	Email string `json:"email"`
-	Phone string `json:"phone"`
+	Name       string  `json:"name"` // `json:"key"`
+	Age        int     `json:"age"`
+	Email      string  `json:"email"`
+	Phone      string  `json:"phone"`
+	City       *string `json:"ville"`
+	Country    string  `json:"country,omitempty"`
+	PostalCode string  `json:"-"`
 }
 
 func main() {
@@ -19,13 +22,16 @@ func main() {
 				"name": "cedric",
 				"age": 34,
 				"email": "ced@gmail.com",
-				"phone": "0619770606"
+				"phone": "0619770606",
+				"ville": "Paris",
+				"postalCode": "75009"
 			},
 			{
 				"name": "alex",
 				"age": 30,
 				"email": "alex@gmail.com",
-				"phone": "061977010"
+				"phone": "061977010",
+				"postalCode": "75009"
 			}
 		]
 	`
@@ -40,16 +46,16 @@ func main() {
 	// gestion de l err (si il y a une err) et parsing dans users
 	if err := json.Unmarshal([]byte(jsonFromApi), &users); err != nil {
 		fmt.Println("Error unmarshalling json :", err)
+		return
 	}
 
 	fmt.Printf("---------🔥🔥🔥----------\n")
 	fmt.Printf("json after UnMarshall : \n %v \n", users)
 
 	for k, v := range users {
-		fmt.Printf("%v : name => %v, telephone => %s\n", k, v.Name, v.Phone)
-		// FIXME comment recuperer name age email et phone
-		// maj : map plutot que slice ?
-		// FIXME comment Gerer l erreur sur un for
+		// fmt.Printf("%d : name => %s, telephone => %s, age => %d\n", k, v.Name, v.Phone, v.Age)
+		fmt.Printf("~~~~~> user[%d]: %+v\n", k, v)
+		fmt.Println("")
 	}
 
 	//-------------------------------------------------------
@@ -61,6 +67,7 @@ func main() {
 	user_one.Age = 30
 	user_one.Email = "kev@gmail.com"
 	user_one.Phone = "0617283940"
+	user_one.PostalCode = "75009"
 
 	// on add les donnees de user a mystruct qui est de type User
 	myStruct = append(myStruct, user_one)
